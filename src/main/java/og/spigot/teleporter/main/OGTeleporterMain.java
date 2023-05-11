@@ -18,6 +18,12 @@ public class OGTeleporterMain extends JavaPlugin {
         getLogger().info("§7[§3OGTeleporter§7] enabling...");
         readConfiguration();
 
+        if(!getDataFolder().exists()){
+            getDataFolder().mkdirs();
+            getConfig().options().copyDefaults(true);
+            saveDefaultConfig();
+        }
+
         getServer().getPluginManager().registerEvents(new OGTeleporterMainListener(), this);
         super.onEnable();
     }
